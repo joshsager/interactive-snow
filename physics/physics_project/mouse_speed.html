@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mouse Speed</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<style>
+	
+	body{
+		margin:0;
+		padding: 20px;
+	}
+	
+	#myCanvas{
+		background: #D8FCCF; 
+		width:700px; 
+		height:300px;
+	}
+
+</style>
+
+<script>
+
+var mouseSpeed;
+var context;
+
+function displayMouseSpeed(){
+	document.getElementById("mouseSpeed").innerHTML = mouseSpeed;	
+}
+
+</script>
+
+<body>
+
+<h1 id="mouseSpeedTesting">0</h1>
+
+<canvas id="myCanvas">
+	<script>
+		var canvas = document.getElementById('myCanvas');
+      	var context = canvas.getContext('2d');
+		
+		var xcoord;
+		var xcoordOld = 0;
+		var ycoord;
+		var ycoordOld = 0;
+		var speed;
+		var speed1;
+		var speed2;
+		
+		setInterval(function(){speedAttempt()}, 100);
+		
+		$(document).mousemove(function(e){
+			xcoord = e.pageX;
+			ycoord = e.pageY;
+			
+			if(e.pageX > 20 && e.pageX < 720 && e.pageY > 20 && e.pageY < 320){
+				console.log("x cord: " + xcoord);
+				console.log("y cord: " + ycoord);
+			
+				$("#myCanvas").css("cursor", "pointer");
+				
+			}
+		});
+		
+		function speedAttempt(){
+			xcoordOld = xcoord;
+			ycoordOld = ycoord;
+			$("#mouseSpeedTesting").html("xord: " + xcoord + " ||| ycord: " + ycoord);
+		}
+		 
+	</script>
+</canvas>
+
+</body>
+</html>
