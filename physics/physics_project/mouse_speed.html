@@ -35,7 +35,8 @@ function displayMouseSpeed(){
 
 <body>
 
-<h1 id="mouseSpeedTesting">0</h1>
+<h1 id="mouseSpeedTesting">Cordinates</h1>
+<h1 id="arrayValues">Array Values</h1>
 
 <canvas id="myCanvas">
 	<script>
@@ -46,30 +47,43 @@ function displayMouseSpeed(){
 		var xcoordOld = 0;
 		var ycoord;
 		var ycoordOld = 0;
-		var speed;
-		var speed1;
-		var speed2;
 		
-		setInterval(function(){speedAttempt()}, 100);
+		var result=0;
+		
+		var xp = new Array(0, 0);
+		var i = 0;
+		
+		var newXspeed = setInterval(function(){speedAttempt()}, 1000/30);
 		
 		$(document).mousemove(function(e){
 			xcoord = e.pageX;
 			ycoord = e.pageY;
 			
 			if(e.pageX > 20 && e.pageX < 720 && e.pageY > 20 && e.pageY < 320){
-				console.log("x cord: " + xcoord);
-				console.log("y cord: " + ycoord);
-			
+				$("#mouseSpeedTesting").html("xord: " + xcoord + " ||| ycord: " + ycoord);
+				$("#arrayValues").html("XP[0]: " + xp[0] + " <br />XP[1]: " + xp[1] + "<br />result: " + result);
 				$("#myCanvas").css("cursor", "pointer");
 				
 			}
 		});
 		
+		
 		function speedAttempt(){
+			xp[i++%2] = xcoord;
+			
+			result = Math.abs(xp[0] - xp[1]);
+		}
+		
+		/*function speedAttempt(e){
 			xcoordOld = xcoord;
 			ycoordOld = ycoord;
-			$("#mouseSpeedTesting").html("xord: " + xcoord + " ||| ycord: " + ycoord);
-		}
+			xspeed = xcoord - xcoordOld;
+			
+			console.log("xspeed " + xspeed);
+			
+			
+		}*/
+		
 		 
 	</script>
 </canvas>
