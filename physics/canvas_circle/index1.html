@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #myCanvas {
+        border: 5px solid #5F9EA0;
+	  }
+    </style>
+  </head>
+  <body>
+  <!--http://html5example.net/entry/tutorial/how-to-draw-with-html-5-canvas
+  http://html5example.net/entry/tutorial/html-5-canvas-cheat-sheet
+  
+  http://html5example.net/tag/cheat%20sheet/
+  
+  http://stackoverflow.com/questions/7733274/animating-a-shape-created-w-javascript-canvas
+  
+  http://en.wikipedia.org/wiki/Svg
+  
+  http://html5example.net/entry/tutorial/html5-audio
+ -->
+ <!--why does changing the color in a separate script change all the stroke colors?-->
+    <canvas id="myCanvas" width="1000" height="800"></canvas>
+   <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+      var radius = 300;
+      var startAngle = 0 * Math.PI;
+      var endAngle = 360 * Math.PI;
+      var counterClockwise = false;
+
+      context.beginPath();
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 10;
+
+      // line color
+      context.strokeStyle = 'pink';
+      context.stroke();
+	  context.fillStyle = 'AntiqueWhite';
+      context.fill();
+    </script> 
+    
+    
+    
+	
+	<script>
+	var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ ctx.moveTo(100,100);
+ctx.lineTo(200,200);
+context.stroke();
+
+
+
+ </script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width / 3;
+      var y = canvas.height / 2;
+      var radius = 50;
+      var startAngle = 1 * Math.PI;
+      var endAngle = 0 * Math.PI;
+      var counterClockwise = false;
+
+      context.beginPath();
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 30;
+
+      // line color
+      context.strokeStyle = 'aqua';
+      context.stroke();
+    </script>
+	
+	
+	
+	<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width * 2/3;
+      var y = canvas.height / 2;
+      var radius = 50;
+      var startAngle = 1 * Math.PI;
+      var endAngle = 0 * Math.PI;
+      var counterClockwise = false;
+
+      context.beginPath();
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 30;
+
+      // line color
+      context.strokeStyle = 'cyan';
+      context.stroke();
+    </script>
+	
+	
+	<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var x = canvas.width / 2;
+      var y = canvas.height * 3/5;
+      var radius = 150;
+      var startAngle = 0 * Math.PI;
+      var endAngle = 1 * Math.PI;
+      var counterClockwise = false;
+
+      context.beginPath();
+      context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+      context.lineWidth = 15;
+
+      // line color
+      context.strokeStyle = 'red';
+      context.stroke();
+    </script>
+	
+  </body>
+</html>
