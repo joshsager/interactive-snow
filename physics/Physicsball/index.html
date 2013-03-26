@@ -3,12 +3,60 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
-<script src="js/script.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-
+<style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #myCanvas {
+        border: 1px solid #9C9898;
+      }
+    </style> 
+  </head>
 <body>
-<img src="img/Untitled-1.gif" width="117" height="122" id="circle">
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <script>
+	onload = init;
 	
+	
+	var loopInterval = setInterval(loop, 1000/30);
+
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var centerX = canvas.width / 2;
+      var centerY = canvas.height / 2;
+      var radius = 70;
+	  var targetX = canvas.width / 2;
+	  var x = centerX;
+
+     
+	  
+	  
+	 function init(){
+		
+		document.body.onclick = function(){easing()};
+	
+	}
+	
+	function easing(){
+		targetX += 100;
+		console.log("hi")
+		}
+		
+	function loop(){
+	  
+	  x += (targetX - x) * .05;	
+		
+	  context.clearRect(0,0,600,600);	
+	  context.beginPath();
+      context.arc(x, centerY, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = 'green';
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+		
+	}
+    </script>
 </body>
 </html>

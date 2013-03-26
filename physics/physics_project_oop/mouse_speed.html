@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mouse Speed</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<style>
+	
+	body{
+		margin:0;
+		padding: 20px;
+	}
+	
+	#myCanvas{
+		border: 1px solid #9C9898;
+		background: #edf3ff;
+	}
+
+</style>
+
+<script>
+
+var mouseSpeed;
+var context;
+
+function displayMouseSpeed(){
+	document.getElementById("mouseSpeed").innerHTML = mouseSpeed;	
+}
+
+</script>
+
+<body>
+<canvas id="myCanvas" width="700" height="300" >
+</canvas>
+
+<h1 id="mouseSpeedTesting">Cordinates</h1>
+<h1 id="arrayValues">Array Values</h1>
+
+<script>
+onload = init;
+		
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+/*		
+var canvasWidth;
+var canvasHeight;
+
+var canvasXCenter = 700/2;
+var canvasYCenter = 300/2;
+*/
+		
+var xcoord;
+var xcoordOld = 0;
+var ycoord;
+var ycoordOld = 0;
+var theSide;
+var resultx=0;
+var resulty=0;
+var totalSpeed = 0;
+		
+var xp = new Array(0, 0);
+var yp = new Array(0, 0);
+var x = 0;
+var y = 0;
+var radius = 10;
+		
+var newXspeed = setInterval(function(){speedAttempt()}, 1000/32);
+		
+function init(){
+	canvas = context;
+	canvas.width = 800;
+	canvas.height = 800;
+				
+	canvasWidth = 800;
+	canvasHeight = 800;
+	context.fillRect(0, 0, 800, 800);
+}
+			
+$(document).mousemove(function(e){
+	xcoord = e.pageX;
+	ycoord = e.pageY;
+});
+		
+$(document).mousemove(function(e){
+	if(e.pageX > 20 && e.pageX < 720 && e.pageY > 20 && e.pageY < 320){
+		$("#mouseSpeedTesting").html("xord: " + xcoord + " ||| ycord: " + ycoord);
+		$("#arrayValues").html("<br /> XP[0]: " + xp[0] + " <br />XP[1]: " + xp[1] + "<br />result x: " + resultx + "<br /> <br >YP[0]: " + yp[0] + " <br />YP[1]: " + yp[1] + "<br />result y: " + resulty + "<br /><br /> which side: " + theSide + "<br /><br /> total speed: " + totalSpeed );
+				
+		$("#myCanvas").css("cursor", "pointer");
+				
+		if(e.pageX > 340 && e.pageX < 720){
+			theSide = "right";
+		} else if(e.pageX > 20 && e.pageX < 340){
+			theSide = "left";
+		}
+	}
+});
+
+var movingCircle = new Circles(canvas, arc, xcoord, ycoord, 25, "#00d3f9", 5, "#1c1b1g");
+
+function Circles(type, objectType, xpos, ypos, radius, fillStyle, lineWidth, strokeStyle){
+	type.objectType(xpos, ypos, radius, 0 , 2 * Math.PI, false);
+	type.fillStyle = fillStyle;
+    type.fill();
+    type.lineWidth = lineWidth;
+    type.strokeStyle = strokeStyle;
+    type.stroke();
+}
+	
+function speedAttempt(){		
+	canvas.clearRect(0,0,canvasWidth,canvasHeight);
+			
+	xp[x++%2] = xcoord;
+	resultx = xp[0] - xp[1];
+			
+	yp[y++%2] = ycoord;
+	resulty = yp[0] - yp[1];
+			
+	totalSpeed = ((resultx*2)+(resulty*2))/2;
+			
+	
+			/*canvas.beginPath();
+			canvas.arc(xcoord, ycoord, 25, 0 , 2 * Math.PI, false);
+			canvas.fillStyle = '#00d3f9';
+       	 	canvas.fill();
+       		canvas.lineWidth = 5;
+        	canvas.strokeStyle = '#1c1b1b';
+        	canvas.stroke();
+			
+
+			canvas.beginPath();
+			canvas.arc(350, 150, 50, 0 , 2 * Math.PI, false);
+			canvas.fillStyle = '#00d3f9';
+       		canvas.lineWidth = 5;
+        	canvas.strokeStyle = '#1c1b1b';
+        	canvas.stroke();*/
+			
+			
+		}
+		
+		/*function speedAttempt(e){
+			xcoordOld = xcoord;
+			ycoordOld = ycoord;
+			xspeed = xcoord - xcoordOld;
+			
+			console.log("xspeed " + xspeed);
+			
+			
+		}*/
+		
+		 
+	</script>
+
+</body>
+</html>

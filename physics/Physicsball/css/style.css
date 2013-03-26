@@ -1,7 +1,9 @@
 /* CSS Document */
 
-#circle{
-	position:absolute;
-	}
-.pos{
-	padding:10px;}
+body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #myCanvas {
+        border: 1px solid #9C9898;
+      }

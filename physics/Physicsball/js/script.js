@@ -3,16 +3,29 @@ onload = init;
 
 var targetx;
 
-var moveCircle = document.getElementById("circle");
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+var centerX = canvas.width / 2;
+var centerY = canvas.height / 2;
+var radius = 70;
+
+context.beginPath();
+context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+context.fillStyle = 'green';
+context.fill();
+context.lineWidth = 5;
+context.strokeStyle = '#003300';
+context.stroke();
 
 function init(){
 		
-		document.getElementById("circle").ononmousedown = function(){easing()};
+		context.ononmousedown = function(){easing()};
 	
 	}
 	
 function easing(){
-	if(document.getElementById("circle").onmousedown){
-		document.getElementById("circle").style.left = "10px";
+	if(context.onmousedown){
+		context.style.left = "10px";
 	}
 	}
+	
