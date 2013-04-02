@@ -28,7 +28,7 @@
       var radius = 70;
 	  var targetX = canvas.width / 2;
 	  var x = centerX;
-
+	  var speed = 400;
      
 	  
 	  
@@ -39,11 +39,26 @@
 	}
 	
 	function easing(){
-		targetX += 100;
+		targetX += speed;
 		console.log("hi")
+		
+		
 		}
 		
 	function loop(){
+		
+		if(x > 600){
+		  console.log(x)
+			speed *= -1;
+			x=600
+			targetX = 600
+			}	
+		if(x < 0){
+		  console.log(x)
+			speed *= -1;
+			x=0
+			targetX = 0
+			}	
 	  
 	  x += (targetX - x) * .05;	
 		
@@ -55,7 +70,8 @@
       context.lineWidth = 5;
       context.strokeStyle = '#003300';
       context.stroke();
-		
+	  
+	  	
 	}
     </script>
 </body>
