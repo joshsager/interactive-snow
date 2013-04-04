@@ -1,0 +1,45 @@
+// JavaScript Document
+
+onload = init;
+var c;
+var circle1;
+var circle2;
+var loopInterval = setInterval(loop,1000/30);
+
+function init(){
+	createCanvas();
+	
+	circle1 = new Circle(100,100);
+	circle2 = new Circle(200,200);
+	
+	window.onmousemove = function (e){circle1.x = e.pageX; circle1.y= e.pageY; }
+
+}
+
+function createCanvas(){
+	canvas = document.createElement( 'canvas' );
+	context = canvas.getContext( '2d' );
+	canvas.width = 800; 
+	canvas.height = 600; 
+	document.body.appendChild(canvas);
+	c = context; 
+}
+
+function Circle(xp, yp){
+	this.x = xp;
+	this.y = yp;
+	
+	this.update = function(){
+		c.fillStyle = 'rgb(255,0,0)';
+		c.beginPath(); 
+		c.arc(this.x,this.y,25,0,Math.PI*2,true); 
+		c.fill(); 
+	}
+}
+
+function loop(){
+	//console.log("hey", circle1.x);
+	c.clearRect(0,0,800,600);
+	circle1.update();
+	circle2.update();
+}
